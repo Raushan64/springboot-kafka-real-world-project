@@ -8,5 +8,5 @@ How to start zookeeper and kafka-broker
 > ./kafka-server-start.sh ../config/server.properties
 
 How to send the json-wikimedia real time data from kafka-producer
-1. Just start the app, it call sendMessage() to send the json-wikimedia to kafka-topic
+1. Just start the app, it call sendMessage() to send the json-wikimedia real time data to kafka-topic
 2. consumer will read this message from kafka-topic and save into DB.
