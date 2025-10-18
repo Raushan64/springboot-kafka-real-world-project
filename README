@@ -10,3 +10,34 @@ How to start zookeeper and kafka-broker
 How to send the json-wikimedia real time data from kafka-producer
 1. Just start the app, it call sendMessage() to send the json-wikimedia real time data to kafka-topic
 2. consumer will read this message from kafka-topic and save into DB.
+
+
+Kafka commands
+1. Install Kafka
+> brew services start kafka
+
+2. start Start Zookeeper
+> cd kafka_2.13-3.3.1/bin
+> ./zookeeper-server-start.sh ../config/zookeeper.properties
+
+3. start Kafka Broker
+> cd kafka_2.13-3.3.1/bin
+> ./kafka-server-start.sh ../config/server.properties
+
+4. start the kafka-producer to send the message to kafka-topic
+> bin/kafka-console-producer.sh --broker-list localhost:9092 --topic <topic-name>
+
+5. create the kafka-topic from producer-console
+> bin/kafka-topics.sh --describe --topic <topic-name> --bootstrap-server localhost:9092
+
+6. See the created kafka-topic list, you can see in producer/consumer console 
+> bin/kafka-topics.sh --list --bootstrap-server localhost:9092
+
+7. start the kafka-consumer to see the message from kafka-topic
+> bin/kafka-console-consumer.sh --topic <topic-name> --from-beginning --bootstrap-server localhost:9092
+This is my first event
+This is my second event
+
+
+Reference:
+https://www.youtube.com/watch?v=inrQUHLPFd4&list=PL-fmmU4KUbPZZ9CzwdReK2IrzmbG-amiA&index=38
